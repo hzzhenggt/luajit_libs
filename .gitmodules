@@ -1,0 +1,32 @@
+[submodule "LuaJIT"]
+	path = LuaJIT
+	url = https://github.com/LuaJIT/LuaJIT.git
+	branch = v2.1
+[submodule "submodules/luafilesystem"]
+	path = submodules/luafilesystem
+	url = https://github.com/keplerproject/luafilesystem.git
+	branch = master
+[submodule "submodules/lua-protobuf"]
+	path = submodules/lua-protobuf
+	url = https://github.com/starwing/lua-protobuf.git
+	branch = master
+[submodule "submodules/luasocket"]
+	path = submodules/luasocket
+	url = https://github.com/diegonehab/luasocket.git
+	branch = master
+[submodule "submodules/md5"]
+	path = submodules/md5
+	url = https://github.com/keplerproject/md5
+	branch = master
+[submodule "submodules/lua-cjson"]
+	path = submodules/lua-cjson
+	url = https://github.com/openresty/lua-cjson.git
+	branch = master
+[submodule "submodules/lpeg"]
+	path = submodules/lpeg
+	url = https://github.com/roberto-ieru/LPeg.git
+	branch = master
+[submodule "submodules/lua-rapidjson"]
+	path = submodules/lua-rapidjson
+	url = https://github.com/xpol/lua-rapidjson.git
+	branch = master
