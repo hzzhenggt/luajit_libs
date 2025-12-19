@@ -83,10 +83,10 @@ echo "=================================="
 LPEG_DIR="$CURDIR/submodules/lpeg"
 mkdir -p "$LPEG_DIR/build"
 cd "$LPEG_DIR"
-cmake -H. -Bbuild \
-  -DLUA_INCLUDE_DIR="$LUASRC" \
-  -DLUA_LIBRARY="$LUALIB"
-make -C build
+make linux \
+    LUADIR="$LUASRC" \
+    DLLFLAGS="-shared -fPIC -L$OUTPUT_DIR/lib -lluajit-5.1"
+
 cp build/lpeg.so "$OUTPUT_DIR/" || echo "Build lpeg.so failed!"
 cp re.lua "$OUTPUT_DIR/lua/" || true
 cd "$CURDIR"
