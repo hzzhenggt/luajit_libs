@@ -50,7 +50,7 @@ gcc -fPIC -shared \
 echo "=================================="
 echo "Building lua-rapidjson..."
 echo "=================================="
-RAPIDJSON_DIR="$CURDIR/submodules/lua-rapidjson-0.7.1"
+RAPIDJSON_DIR="$CURDIR/submodules/lua-rapidjson"
 mkdir -p "$RAPIDJSON_DIR/build"
 cd "$RAPIDJSON_DIR"
 cmake -H. -Bbuild \
