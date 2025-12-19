@@ -113,15 +113,15 @@ echo "=================================="
 LUA_SOCKET_DIR="$CURDIR/submodules/luasocket/src"
 mkdir -p "$LUA_SOCKET_DIR/build"
 cd "$LUA_SOCKET_DIR"
-cmake -H. -Bbuild \
-  -DLUA_INCLUDE_DIR="$CURDIR/release/include/luajit-2.1" \
-  -DLUA_LIBRARIES="$CURDIR/release/lib/libluajit-5.1.so" \
-  -DLUA_LIBRARY="$CURDIR/release/lib/libluajit-5.1.so" \
-  -DLUA_EXECUTABLE="$CURDIR/release/bin/luajit"
 
-make -C build
-cp build/socket.so "$OUTPUT_DIR/" || echo "Build socket.so failed!"
-cp build/mime.so "$OUTPUT_DIR/" || echo "Build mime.so failed!"
+make \
+  LUAINC_linux="$CURDIR/release/include/luajit-2.1" \
+  LUALIB_linux="$CURDIR/release/lib" \
+  CC="gcc -fPIC" \
+  linux
+cp socket.so "$OUTPUT_DIR/"
+cp mime.so "$OUTPUT_DIR/"
+
 cd "$CURDIR"
 
 echo "=================================="
