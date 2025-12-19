@@ -26,10 +26,9 @@ cd "$LUASRC"
 
 # LuaJIT 自带 Makefile，直接 make 就行
 make clean
-make PREFIX="$OUTPUT_DIR" CC="gcc" BUILDMODE=dynamic
+make all
 
-# 安装到 release 目录
-make install PREFIX="$OUTPUT_DIR"
+cp -rfp libluajit.a libluajit.so luajit "$OUTPUT_DIR/" || echo "Copy files failed!"
 
 cd "$CURDIR"
 
