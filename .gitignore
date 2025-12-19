@@ -1,0 +1,4 @@
+/release/*.obj
+/release/*.exp
+/release/*.lib
+release
