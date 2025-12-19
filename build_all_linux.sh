@@ -81,13 +81,11 @@ echo "=================================="
 echo "Building lpeg..."
 echo "=================================="
 LPEG_DIR="$CURDIR/submodules/lpeg"
-mkdir -p "$LPEG_DIR/build"
 cd "$LPEG_DIR"
 make linux \
     LUADIR="$LUASRC" \
     DLLFLAGS="-shared -fPIC -L$OUTPUT_DIR/lib -lluajit-5.1"
-
-cp build/lpeg.so "$OUTPUT_DIR/" || echo "Build lpeg.so failed!"
+cp lpeg.so "$OUTPUT_DIR/" || echo "Build lpeg.so failed!"
 cp re.lua "$OUTPUT_DIR/lua/" || true
 cd "$CURDIR"
 
@@ -100,10 +98,10 @@ echo "=================================="
 LUA_PROTOBUF_DIR="$CURDIR/submodules/lua-protobuf"
 cd "$LUA_PROTOBUF_DIR"
 gcc -O2 -fPIC -shared pb.c \
-    -I"$LUASRC" \
-    -DLUA_BUILD_AS_DLL \
-    -o "$OUTPUT_DIR/pb.so" \
-    "$LUALIB" || echo "Build pb.so failed!"
+    -I"$CURDIR/release/include/luajit-2.1" \
+    -L"$CURDIR/release/lib" \
+    -lluajit-5.1 \
+    -o "$OUTPUT_DIR/pb.so" || echo "Build pb.so failed!"
 cd "$CURDIR"
 
 #######################################
@@ -116,8 +114,11 @@ LUA_SOCKET_DIR="$CURDIR/submodules/luasocket/src"
 mkdir -p "$LUA_SOCKET_DIR/build"
 cd "$LUA_SOCKET_DIR"
 cmake -H. -Bbuild \
-  -DLUA_INCLUDE_DIR="$LUASRC" \
-  -DLUA_LIBRARIES="$LUALIB"
+  -DLUA_INCLUDE_DIR="$CURDIR/release/include/luajit-2.1" \
+  -DLUA_LIBRARIES="$CURDIR/release/lib/libluajit-5.1.so" \
+  -DLUA_LIBRARY="$CURDIR/release/lib/libluajit-5.1.so" \
+  -DLUA_EXECUTABLE="$CURDIR/release/bin/luajit"
+
 make -C build
 cp build/socket.so "$OUTPUT_DIR/" || echo "Build socket.so failed!"
 cp build/mime.so "$OUTPUT_DIR/" || echo "Build mime.so failed!"
