@@ -6,7 +6,7 @@ echo "Building lua ext libs for Debian9"
 
 CURDIR=$(pwd)
 LUASRC="$CURDIR/LuaJIT/src"
-LUALIB="$CURDIR/release/libluajit-5.1.so"   # 注意：Linux下通常是静态lib或so
+LUALIB="$CURDIR/release/lib/luajit-5.1.so"   # 注意：Linux下通常是静态lib或so
 OUTPUT_DIR="$CURDIR/release"
 
 mkdir -p "$OUTPUT_DIR/lua"
