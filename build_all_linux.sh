@@ -119,8 +119,7 @@ make \
   LUALIB_linux="$CURDIR/release/lib" \
   CC="gcc -fPIC" \
   linux
-cp socket.so "$OUTPUT_DIR/"
-cp mime.so "$OUTPUT_DIR/"
+cp *.so $CURDIR/release/lib/lua/5.1/
 
 cd "$CURDIR"
 
