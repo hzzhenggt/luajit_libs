@@ -58,7 +58,7 @@ if %ERRORLEVEL% NEQ 0 (
 echo ==================================
 echo Building lua-rapidjson...
 echo ==================================
-set rapidjson_dir=%curdir%\submodules\lua-rapidjson-0.7.1
+set rapidjson_dir=%curdir%\submodules\lua-rapidjson
 cd /d %rapidjson_dir%
 cmake -H. -Bbuild -G "Visual Studio 12 2013" ^
   -DLUA_INCLUDE_DIR=%luasrc% ^
